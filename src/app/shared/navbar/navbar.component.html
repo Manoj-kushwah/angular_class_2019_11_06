@@ -1,0 +1,7 @@
+<div>
+  <a [routerLink]="''">Home</a> &nbsp;
+  <a [routerLink]="'about'">About</a> &nbsp;
+  <a [routerLink]="'contact'">Contact</a> &nbsp;
+  <a *ngIf="(!isLogout() && isLogin())" [routerLink]="'login'">Login</a> &nbsp;
+  <a *ngIf="(isLogout())" [routerLink]="''">Logout</a> &nbsp;
+</div>
