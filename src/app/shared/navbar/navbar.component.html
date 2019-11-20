@@ -5,3 +5,6 @@
   <a *ngIf="(!isLogout() && isLogin())" [routerLink]="'login'">Login</a> &nbsp;
   <a *ngIf="(isLogout())" [routerLink]="''">Logout</a> &nbsp;
 </div>
+{{input}}
+
+<h1 (click)="clickToH1($event)">Click</h1>

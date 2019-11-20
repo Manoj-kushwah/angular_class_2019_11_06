@@ -17,4 +17,10 @@ export class ContactComponent implements OnInit {
     console.log(this.appNav);
   }
 
+  /**
+   * navbarEvent
+   */
+  public navbarEvent(event: any) {
+    console.log(event);
+  }
 }
