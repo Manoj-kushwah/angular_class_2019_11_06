@@ -8,7 +8,7 @@ import { NavbarComponent } from '../shared/navbar/navbar.component';
 })
 export class HomeComponent implements OnInit {
   title = 'angulartest';
-
+  sampleList: string[] = ['Sample item', 'Sample item', 'Sample item', 'Sample item', 'Sample item', 'Sample item'];
   @ViewChild('appNav') public appNav: NavbarComponent; //ElementRef;
   constructor() { }
 
@@ -16,6 +16,22 @@ export class HomeComponent implements OnInit {
     this.appNav.showLogin(true);
     //this.appNav.showLogout(true);
     console.log(this.appNav);
+  }
+
+  /**
+   * removeFromSampleList
+   */
+  public removeFromSampleList(index: number) {
+    console.log('index: ', index);
+    this.sampleList.splice(index, 1);
+  }
+
+  /**
+   * addInToSampleList
+   */
+  public addInToSampleList(item: string) {
+    console.log('item: ', item);
+    this.sampleList.unshift(item);
   }
 
 }
