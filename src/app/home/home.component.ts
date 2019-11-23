@@ -8,7 +8,8 @@ import { NavbarComponent } from '../shared/navbar/navbar.component';
 })
 export class HomeComponent implements OnInit {
   title = 'angulartest';
-  sampleList: string[] = ['Sample item', 'Sample item', 'Sample item', 'Sample item', 'Sample item', 'Sample item'];
+  public sampleList: string[] = ['Sample item'];
+  public searchQuery: string;
   @ViewChild('appNav') public appNav: NavbarComponent; //ElementRef;
   constructor() { }
 
