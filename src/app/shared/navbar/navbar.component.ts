@@ -13,7 +13,7 @@ export class NavbarComponent implements OnInit {
   private login: boolean = false;
   private logout: boolean = false;
 
-  @Input('input1') private input: string;
+  @Input('input1') public input: string;
 
   @Output('out1') private out: EventEmitter<any> = new EventEmitter<any>();
 

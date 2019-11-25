@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NavbarComponent } from '../shared/navbar/navbar.component';
+import { DataMapService } from '../shared/data-map.service';
 
 @Component({
   selector: 'app-home',
@@ -11,12 +12,14 @@ export class HomeComponent implements OnInit {
   public sampleList: string[] = ['Sample item'];
   public searchQuery: string;
   @ViewChild('appNav') public appNav: NavbarComponent; //ElementRef;
-  constructor() { }
+  constructor(private dataMap: DataMapService) { }
 
   ngOnInit() {
+    console.log('dataMap: ', this.dataMap);
     this.appNav.showLogin(true);
     //this.appNav.showLogout(true);
     console.log(this.appNav);
+    this.sampleList = this.dataMap.nameList;
   }
 
   /**

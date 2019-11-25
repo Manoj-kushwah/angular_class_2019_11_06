@@ -5,6 +5,7 @@ import { HomeComponent } from './home.component';
 import { HomeRoutingModule } from './home-routing.module';
 import { NavbarModule } from '../shared/navbar/navbar.module';
 import { ListFilterPipe } from '../shared/list-filter.pipe';
+import { DataMapService } from '../shared/data-map.service';
 
 @NgModule({
   declarations: [HomeComponent, ListFilterPipe],
@@ -13,6 +14,9 @@ import { ListFilterPipe } from '../shared/list-filter.pipe';
     FormsModule,
     HomeRoutingModule,
     NavbarModule
+  ],
+  providers: [
+    DataMapService
   ]
 })
 export class HomeModule { }
