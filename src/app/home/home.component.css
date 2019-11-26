@@ -1,3 +1,15 @@
 .hide {
     display: none !important;
 }
+.c1{
+    background: blueviolet;
+}
+.c2{
+    background: burlywood;
+}
+.c3{
+    background: chartreuse;
+}
+.c4{
+    background: crimson;
+}
