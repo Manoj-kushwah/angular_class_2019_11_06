@@ -1,4 +1,4 @@
-<div class="container-fluid" *ngIf="true">
+<!-- <div class="container-fluid" *ngIf="true">
   <ul class="list-group">
     <li class="list-group-item">
       <div class="input-group mb-3">
@@ -9,27 +9,11 @@
       </div>
     </li>
   </ul>
-  <div class="list-group" [ngClass]="{'c1': (templateNo==1),'c2': (templateNo==2),'c3': (templateNo==3),'c4': (templateNo==4)}">
-    <h1>Element and class</h1>
-  </div>
-  <div class="list-group" [ngSwitch]="templateNo">
+  <div class="list-group">
     <div class="list-group-item" *ngSwitchCase="0">
       <h1>Template 0</h1>
     </div>
-    <div class="list-group-item" *ngSwitchCase="1">
-      <h1>Template 1</h1>
-    </div>
-    <div class="list-group-item" *ngSwitchCase="2">
-      <h1>Template 2</h1>
-    </div>
-    <div class="list-group-item" *ngSwitchCase="3">
-      <h1>Template 3</h1>
-    </div>
-    <div class="list-group-item" *ngSwitchCase="4">
-      <h1>Template 4</h1>
-    </div>
-    <div class="list-group-item" *ngSwitchDefault>
-      <h1>Template Default</h1>
-    </div>
   </div>
-</div>
+</div> -->
+<button (click)="getUserListData()">Get data</button>
+{{userList | json}}

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
 import { CommonModule } from '@angular/common';
 import { HomeComponent } from './home.component';
 import { HomeRoutingModule } from './home-routing.module';
@@ -11,6 +12,7 @@ import { DataMapService } from '../shared/data-map.service';
   declarations: [HomeComponent, ListFilterPipe],
   imports: [
     CommonModule,
+    HttpModule,
     FormsModule,
     HomeRoutingModule,
     NavbarModule
