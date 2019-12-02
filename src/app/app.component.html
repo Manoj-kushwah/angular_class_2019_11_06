@@ -6,7 +6,7 @@
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <form class="form-inline mr-auto my-2 my-lg-0">
+        <form class="form-inline ml-auto my-2 my-lg-0">
             <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
         </form>
@@ -29,8 +29,11 @@
             <li class="nav-item">
                 <a class="nav-link" [routerLink]="['contact']">Contact</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" *ngIf="isUiBtnLogin()">
                 <a class="nav-link" [routerLink]="['login']">Login</a>
+            </li>
+            <li class="nav-item" *ngIf="isUiBtnLogout()">
+                <a class="nav-link">Logout</a>
             </li>
             <!-- <li class="nav-item">
                 <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
