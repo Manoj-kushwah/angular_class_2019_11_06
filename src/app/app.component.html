@@ -29,10 +29,10 @@
             <li class="nav-item">
                 <a class="nav-link" [routerLink]="['contact']">Contact</a>
             </li>
-            <li class="nav-item" *ngIf="isUiBtnLogin()">
+            <li class="nav-item" *ngIf="!isAuth()">
                 <a class="nav-link" [routerLink]="['login']">Login</a>
             </li>
-            <li class="nav-item" *ngIf="isUiBtnLogout()">
+            <li class="nav-item" *ngIf="isAuth()">
                 <a class="nav-link">Logout</a>
             </li>
             <!-- <li class="nav-item">

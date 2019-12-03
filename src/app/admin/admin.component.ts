@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AppComponent } from '../app.component';
+import { AuthService } from '../shared/auth.service';
 
 @Component({
   selector: 'app-admin',
@@ -8,11 +8,9 @@ import { AppComponent } from '../app.component';
 })
 export class AdminComponent implements OnInit {
 
-  constructor() { }
+  constructor(private auth: AuthService) { }
 
   ngOnInit() {
-    AppComponent.getInstance().setUiBtnLogin(false);
-    AppComponent.getInstance().setUiBtnLogout(true);
   }
 
 }
