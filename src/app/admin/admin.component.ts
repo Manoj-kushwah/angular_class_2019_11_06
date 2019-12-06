@@ -9,7 +9,7 @@ import { ApiService } from '../shared/api.service';
   styleUrls: ['./admin.component.css']
 })
 export class AdminComponent implements OnInit {
-
+  userList: any[];
   constructor(private auth: AuthService, private api: ApiService, private route: Router) { }
 
   ngOnInit() {
@@ -19,8 +19,11 @@ export class AdminComponent implements OnInit {
       });
     }
 
-    this.api.getUsers().then(res=>{
-      console.log("AdminComponent: res ", res);
+    this.api.getUsers().then(resJson=>{
+      console.log("AdminComponent: resJson ", resJson);
+      if (resJson.data) {
+        this.userList = resJson.data;
+      }
     }).catch(err=>{
       
     });
