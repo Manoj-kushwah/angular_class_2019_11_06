@@ -8,9 +8,28 @@
       <div class="row">
         <div class="col-12">
           <ul class="list-group list-group-flush">
-            <li class="list-group-item" *ngFor="let user of userList; let i=index;">
-              <span data-toggle="modal" [attr.data-target]="'#view'+i">{{user.firstName}} {{user.lastName}}</span>
+            <li class="list-group-item">
+              <div class="input-group mb-3">
+                <input (input)="filterUser($event.target.value)" type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="button-addon2">
+                <div class="input-group-append">
+                  <button class="btn btn-outline-secondary" type="button" id="button-addon2">Search</button>
+                </div>
+              </div>
+            </li>
+            <li class="list-group-item" *ngFor="let user of userListUi; let i=index;">
               
+              <div [ngSwitch]="user.gender" class="media" data-toggle="modal" [attr.data-target]="'#view'+i">
+                <img *ngSwitchCase="'female'" width="40" height="40" src="assets/avatar-female.jpg" class="mr-3">
+                <img *ngSwitchCase="'male'" width="40" height="40" src="assets/avatar-male.png" class="mr-3">
+                <img *ngSwitchDefault width="40" height="40" [src]="defaultSrc" class="mr-3">
+                <div class="media-body">
+                  <h5 class="mt-0">{{user.firstName}} {{user.lastName}}</h5>
+                  <p>Dob: {{user.dob | date}}</p>
+                  <p>Email: {{user.email}}</p>
+                  <p>Gender: {{user.gender}}</p>
+                </div>
+              </div>
+
               <div [attr.id]="'view'+i" class="modal" tabindex="-1" role="dialog">
                 <div class="modal-dialog" role="document">
                   <div class="modal-content">
