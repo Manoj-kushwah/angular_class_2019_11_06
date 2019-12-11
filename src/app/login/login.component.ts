@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../shared/auth.service';
 import { ApiService } from '../shared/api.service';
@@ -13,6 +13,7 @@ export class LoginComponent implements OnInit {
   public email: string;
   public password: string;
   
+  public loginLoader: boolean = false;
   constructor(private route: Router, private auth: AuthService, private api: ApiService) { }
 
   ngOnInit() {
@@ -23,6 +24,7 @@ export class LoginComponent implements OnInit {
    * submitLogin
    */
   public submitLogin() {
+    this.showLoader();
     console.log("email: ", this.email, "password: ", this.password);
     this.api.login(this.email, this.password).then(response=>{
       console.log('response: ', response);
@@ -30,6 +32,7 @@ export class LoginComponent implements OnInit {
         this.goToAdmin();
       }
     }).catch(error => {
+      this.hideLoader();
       console.log('error: ', error);
     });
     return false;
@@ -42,8 +45,25 @@ export class LoginComponent implements OnInit {
     this.route.navigate(['', 'admin']).then(res=>{
       console.log('res: ', res);
       this.auth.setLogin(true);
-    }).catch(err=>{
+      this.hideLoader();
+    }).catch(err => {
+      this.hideLoader();
       console.log('err: ', err);
     })
   }
+  
+  /**
+   * showLoader
+   */
+  public showLoader() {
+    this.loginLoader = true;
+  }
+
+  /**
+   * hideLoader
+   */
+  public hideLoader() {
+    this.loginLoader = false;
+  }
+
 }
