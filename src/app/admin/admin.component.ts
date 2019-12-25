@@ -20,7 +20,13 @@ export class AdminComponent implements OnInit {
       }).catch(err=>{
       });
     }
+    this.getAllUser();
+  }
 
+  /**
+   * getAllUser
+   */
+  public getAllUser() {
     this.api.getUsers().then(resJson=>{
       console.log("AdminComponent: resJson ", resJson);
       if (resJson.data) {
@@ -32,7 +38,31 @@ export class AdminComponent implements OnInit {
     });
   }
 
-  filterUser(query?: string): void{
+  /**
+   * addNewUSer
+   */
+  public addNewUSer() {
+    let userData = {
+        // "email": "manojkushwah@gmail.com",
+        // "firstName": "Manoj",
+        // "lastName": "kushwah",
+        // "gender": "male",
+        // "dob": "678306659000",
+        // "role": "1"
+    };
+    this.api.addUser(userData).then((res:any)=>{
+      console.log("res: ", res);
+      if(res.data){
+        this.getAllUser();
+      } else{
+        alert(res.message);
+      }
+    }).catch((err)=>{
+      console.log("err: ", err);
+    });
+  }
+
+  public filterUser(query?: string): void{
     this.userListUi = this.userList.filter(user => {
       return Boolean(!query || (query && String(user.firstName).concat(user.lastName,user.email).match(query)));
     });
