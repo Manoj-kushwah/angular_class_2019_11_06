@@ -9,7 +9,8 @@
         <div class="col-12">
           <ul class="list-group list-group-flush">
             <li class="list-group-item text-right">
-              <span class="btn btn-link" (click)="addNewUSer()">Add new user</span>
+              <!-- <span class="btn btn-link" (click)="addNewUSer()">Add new user</span> -->
+              <span class="btn btn-link" data-toggle="modal" data-target="#addNewUser">Add new user</span>
             </li>
             <li class="list-group-item">
               <div class="input-group mb-3">
@@ -60,5 +61,95 @@
 
     </div>
 
+  </div>
+</div>
+
+
+
+<div class="modal" tabindex="-1" role="dialog" id="addNewUser">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Create new user</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form (ngSubmit)="submitNewUser()" id="newUserForm">
+          <div class="form-group">
+            <label for="inputFirstName">First name</label>
+            <input [(ngModel)]="newUser.firstName" [ngModelOptions]="{standalone: true}" type="text" class="form-control" id="inputFirstName" aria-describedby="helpFirstName">
+            <!-- <small id="helpFirstName" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+          </div>
+
+          <div class="form-group">
+            <label for="inputLastName">Last name</label>
+            <input [(ngModel)]="newUser.lastName" [ngModelOptions]="{standalone: true}" type="text" class="form-control" id="inputLastName" aria-describedby="helpLastName">
+            <!-- <small id="helpLastName" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+          </div>
+
+          <div class="form-group">
+            <label for="inputGender">Gender</label>
+            <div class="form-check form-check-inline ml-2">
+              <input [(ngModel)]="newUser.gender" class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="male">
+              <label class="form-check-label" for="inlineRadio1">Male</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input [(ngModel)]="newUser.gender" class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="female">
+              <label class="form-check-label" for="inlineRadio2">Female</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input [(ngModel)]="newUser.gender" class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="other">
+              <label class="form-check-label" for="inlineRadio3">Other</label>
+            </div>
+            <!-- <input type="email" class="form-control" id="inputGender" aria-describedby="helpGender"> -->
+            <!-- <small id="helpGender" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+          </div>
+
+          <div class="form-group">
+            <label for="inputDob">Dob</label>
+            <input [(ngModel)]="newUser.dob" [ngModelOptions]="{standalone: true}" type="text" class="form-control" id="inputDob" aria-describedby="helpDob">
+            <!-- <small id="helpDob" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+          </div>
+
+          <div class="form-group">
+            <label for="inputRole">Role</label>
+            <select [(ngModel)]="newUser.role" [ngModelOptions]="{standalone: true}" type="text" class="form-control" id="inputRole" aria-describedby="helpRole">
+              <option value="1">Admin</option>
+              <option value="2">SubAdmin</option>
+              <option value="3">User</option>
+            </select>
+            <!-- <small id="helpRole" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+          </div>
+
+          <div class="form-group">
+            <label for="inputEmail">Email</label>
+            <input [(ngModel)]="newUser.email" [ngModelOptions]="{standalone: true}" type="email" class="form-control" id="inputEmail" aria-describedby="helpEmail">
+            <!-- <small id="helpEmail" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+          </div>
+
+          <div class="form-group">
+            <label for="inputPassword">Password</label>
+            <input [(ngModel)]="newUser.password" [ngModelOptions]="{standalone: true}" type="password" class="form-control" id="inputPassword" aria-describedby="helpPassword">
+            <!-- <small id="helpPassword" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+          </div>
+
+          <!-- <div class="form-group">
+            <label for="exampleInputPassword1">Password</label>
+            <input type="password" class="form-control" id="exampleInputPassword1">
+          </div> -->
+          <!-- <div class="form-group form-check">
+            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+            <label class="form-check-label" for="exampleCheck1">Check me out</label>
+          </div> -->
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+      </div>
+      <!-- <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div> -->
+    </div>
   </div>
 </div>
