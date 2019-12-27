@@ -22,12 +22,16 @@
             </li>
             <li class="list-group-item" *ngFor="let user of userListUi; let i=index;">
               
-              <div [ngSwitch]="user.gender" class="media" data-toggle="modal" [attr.data-target]="'#view'+i">
+              <div [ngSwitch]="user.gender" class="media">
                 <img *ngSwitchCase="'female'" width="40" height="40" src="assets/avatar-female.jpg" class="mr-3">
                 <img *ngSwitchCase="'male'" width="40" height="40" src="assets/avatar-male.png" class="mr-3">
                 <img *ngSwitchDefault width="40" height="40" [src]="defaultSrc" class="mr-3">
                 <div class="media-body">
-                  <h5 class="mt-0">{{user.firstName}} {{user.lastName}}</h5>
+                  <h5 class="mt-0">
+                    <span data-toggle="modal" [attr.data-target]="'#view'+i">{{user.firstName}} {{user.lastName}}</span>
+                    <span class="badge badge-secondary float-right" (click)="openUpdateUserModal(user)"> [-] </span >
+                    <span class="badge badge-secondary float-right mr-2" (click)="deleteUser(user)"> &times; </span >
+                  </h5>
                   <p>Dob: {{user.dob | date}}</p>
                   <p>Email: {{user.email}}</p>
                   <p>Gender: {{user.gender}}</p>
@@ -63,6 +67,79 @@
 
   </div>
 </div>
+
+
+
+
+<div class="modal" tabindex="-1" role="dialog" id="updateUser">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Create new user</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form (ngSubmit)="submitUpdateUserInfo()" id="updateUserInfoForm">
+          <div class="form-group">
+            <label for="updateUserInputFirstName">First name</label>
+            <input [(ngModel)]="updateUser.firstName" [ngModelOptions]="{standalone: true}" type="text" class="form-control" id="updateUserInputFirstName" aria-describedby="helpFirstName">
+          </div>
+
+          <div class="form-group">
+            <label for="updateUserInputLastName">Last name</label>
+            <input [(ngModel)]="updateUser.lastName" [ngModelOptions]="{standalone: true}" type="text" class="form-control" id="updateUserInputLastName" aria-describedby="helpLastName">
+          </div>
+
+          <div class="form-group">
+            <label for="inputGender">Gender</label>
+            <div class="form-check form-check-inline ml-2">
+              <input [(ngModel)]="updateUser.gender" class="form-check-input" type="radio" name="updateUserInlineRadioOptions" id="updateUserInlineRadio1" value="male">
+              <label class="form-check-label" for="inlineRadio1">Male</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input [(ngModel)]="updateUser.gender" class="form-check-input" type="radio" name="updateUserInlineRadioOptions" id="updateUserInlineRadio2" value="female">
+              <label class="form-check-label" for="inlineRadio2">Female</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input [(ngModel)]="updateUser.gender" class="form-check-input" type="radio" name="updateUserInlineRadioOptions" id="updateUserInlineRadio3" value="other">
+              <label class="form-check-label" for="inlineRadio3">Other</label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="updateUserInputDob">Dob</label>
+            <input [(ngModel)]="updateUser.dob" [ngModelOptions]="{standalone: true}" type="text" class="form-control" id="updateUserInputDob" aria-describedby="helpDob">
+          </div>
+
+          <div class="form-group">
+            <label for="updateUserInputRole">Role</label>
+            <select [(ngModel)]="updateUser.role" [ngModelOptions]="{standalone: true}" type="text" class="form-control" id="updateUserInputRole" aria-describedby="helpRole">
+              <option value="1">Admin</option>
+              <option value="2">SubAdmin</option>
+              <option value="3">User</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="updateUserInputEmail">Email</label>
+            <input [(ngModel)]="updateUser.email" [ngModelOptions]="{standalone: true}" type="email" class="form-control" id="updateUserInputEmail" aria-describedby="helpEmail">
+          </div>
+
+          <div class="form-group">
+            <label for="updateUserInputPassword">Password</label>
+            <input [(ngModel)]="updateUser.password" [ngModelOptions]="{standalone: true}" type="password" class="form-control" id="updateUserInputPassword" aria-describedby="helpPassword">
+          </div>
+
+          <button type="submit" class="btn btn-primary">Update</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 
 
 

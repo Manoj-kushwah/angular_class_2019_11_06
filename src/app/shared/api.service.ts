@@ -88,6 +88,24 @@ export class ApiService {
     })
   }
 
+
+
+  /**
+   * deleteUser
+   */
+  public deleteUser(user: any): Promise<any> {
+    let url: string = this.api + "/user/delete/";
+    let data: string = JSON.stringify({
+      "userId": user.userId,
+    });
+    console.log("ApiService: url ", url, data);
+    return this.http.post(url, data).toPromise().then(res=>{
+      return res.json();
+    }).catch(err=>{
+      return err;
+    })
+  }
+
 }
 
 /**
